@@ -10,7 +10,19 @@ const listSong = async () => {
     return songs
 };
 
+const updateSong = async (id, body) => {
+    const updatedSong = await Song.findByIdAndUpdate(id, body, { new: true, runValidators: true });
+    return updatedSong;
+}
+
+const deleteSong = async (id) => {
+    const deletedSong = await Song.findByIdAndDelete(id);
+    return deletedSong;
+}
+
 module.exports = {
     createSong,
     listSong,
+    updateSong,
+    deleteSong
 }
